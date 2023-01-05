@@ -42,7 +42,7 @@ router.get("/", (req, res) => {
         res.sendStatus(201);
       })
       .catch((error) => {
-        console.log(`Error in post database `, error);
+        console.log(`Error in post  `, error);
         res.sendStatus(500);
       });
   });

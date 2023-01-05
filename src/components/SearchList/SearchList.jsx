@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SearchPage from "../SearchPage/SearchPage";
+// import { search } from "../../../server/routes/user.router";
 
 function SearchList(){
 const search = useSelector((store)=> store.search);
@@ -13,7 +14,7 @@ return (
         <>
           <SearchPage />
     
-          {search &&
+          { search &&
     search.map((list) => {
               let thumbnail =
     list.volumeInfo.imageLinks &&
