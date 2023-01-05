@@ -13,9 +13,16 @@ function* fetchBooks(action) {
     console.error(" failed", err);
   }
 }
-
+function* fetchApi (action){
+     yield axios({
+        method: "POST", 
+        url: "api/books", 
+        data: action.payload
+     });
+}
 function* booksSaga(){
     yield takeEvery("FETCH_DATABASE",fetchBooks);
+    yield takeEvery("FETCH_BOOKS", fetchApi);
 
 }
 export default booksSaga;
