@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 import booksSaga from './books.saga';
+import descriptionSaga from './description.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import searchSaga from './search.saga';
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     userSaga(),
     booksSaga(),
     searchSaga(),
+    descriptionSaga(),
   ]);
 }
