@@ -19,7 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import SearchPage from '../SearchPage/SearchPage'
+import SearchPage from '../SearchPage/SearchPage';
+import descriptionPage from '../DescriptionPage/DescriptionPage';
 
 import './App.css';
 
@@ -61,11 +62,17 @@ function App() {
             <UserPage />
           </ProtectedRoute>
           <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
             exact
             path="/search"
           >
             < SearchPage/>
+          </ProtectedRoute>
+          
+          <ProtectedRoute
+            exact
+            path="/details/:id"
+          >
+            < descriptionPage/>
           </ProtectedRoute>
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
