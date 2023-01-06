@@ -7,7 +7,7 @@ import { useHistory, useParams } from "react-router-dom";
 function completedBooks({ book }) {
   const dispatch = useDispatch();
   const handleDone = () => {
-    console.log(book.id);
+    console.log("?????", book.id);
     dispatch({
       type: "FETCH_ALL_COMPLETE",
       payload: book.id,
