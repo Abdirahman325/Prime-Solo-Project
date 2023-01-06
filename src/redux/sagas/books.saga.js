@@ -6,7 +6,7 @@ function* fetchBooks(action) {
     let res = yield axios.get("/api/books/");
     console.log("response", res.data);
     yield put({
-      type: "SET_DATABOOKS",
+      type: "SET_DATABOOK",
       payload: res.data,
     });
   } catch (err) {
@@ -20,7 +20,7 @@ function* fetchConcluded(action) {
         url: `/api/books/${action.payload}`,
       });
       console.log("GET all books that have been completed:", action.payload);
-      yield put({ type: "FETCH_DATABASE" });
+      yield put({ type: "FETCH_DATABASE"});
     } catch {
       console.log("ERROR: IN COMPLETING BOOKS");
     }

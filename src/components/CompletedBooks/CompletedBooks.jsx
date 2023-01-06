@@ -4,24 +4,25 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-function completedBooks({ book }) {
+function completedBooks({ books }) {
   const dispatch = useDispatch();
+
   const handleDone = () => {
-    console.log("?????", book.id);
+    console.log("?????", books.id);
     dispatch({
       type: "FETCH_ALL_COMPLETE",
-      payload: book.id,
+      payload: books.id,
     });
 
-    console.log("COMPLETED BOOKS:", book);
+    console.log("COMPLETED BOOKS:", books);
   };
   return (
     <>
-      <h1>{book.title}</h1>
-      <h1>{book.cover}</h1>
-      <h1>{book.author}</h1>
-      <h1>{book.description}</h1>
-      <button onClick={handleDone}></button>
+      <h1>{books.title}</h1>
+      <img src={books.cover} />
+      <h1>{books.author}</h1>
+      <h1>{books.description}</h1>
+      <button onClick={handleDone}> complete </button>
     </>
   );
 }

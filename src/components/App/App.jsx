@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import SearchPage from '../SearchPage/SearchPage';
 import DescriptionPage from '../DescriptionPage/DescriptionPage';
 import SearchList from '../SearchList/SearchList';
+import LibraryPage from '../LibraryPage/LibraryPage';
 // import completedBooks from '../CompletedBooks/CompletedBooks';
 import './App.css';
 
@@ -75,6 +76,15 @@ function App() {
           >
             < DescriptionPage/>
           </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/library"
+          >
+            < LibraryPage />
+
+          </ProtectedRoute>
+          
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
