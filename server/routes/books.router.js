@@ -65,3 +65,22 @@ router.get("/", (req, res) => {
       });
   });
   
+  // put that grabs by id 
+  router.put("/:id", (req, res) => {
+      const id = req.params.id;
+      console.log("put for id: ", id);
+      let sqlQuery = `
+        UPDATE "books" 
+        SET "complete" = $1
+        WHERE "id" = $2;
+      `;
+      const sqlParams = [true, id];
+      pool
+        .query(sqlQuery, sqlParams)
+        .then(() => {
+          res.sendStatus(204);
+        })
+        .catch((error) => {
+          res.sendStatus(500);
+        });
+    });
