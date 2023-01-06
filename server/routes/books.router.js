@@ -43,18 +43,15 @@ router.get("/", (req, res) => {
    router.put("/:id", (req, res) => {
       const id = req.params.id;
       console.log("put for id: ", id);
-      let sqlQuery = `
-       UPDATE "books"
-     SET "complete" = $1
-     WHERE "id" = $2
-      `;
+      let sqlQuery = `UPDATE "books" SET "complete" = $1 WHERE "id" = $2`;
       const sqlParams = [true, id];
       pool
         .query(sqlQuery, sqlParams)
-        .then(() => {
+        .then(() => { 
           res.sendStatus(204);
         })
         .catch((error) => {
+        console.log('in put compleplete: ',error)
           res.sendStatus(500);
         });
     });

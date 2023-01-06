@@ -21,8 +21,8 @@ function* fetchConcluded(action) {
     });
     console.log("GET all books that have been completed:", action.payload);
     yield put({ type: "FETCH_DATABASE" });
-  } catch {
-    console.log("ERROR: IN COMPLETING BOOKS");
+  } catch (err) {
+    console.log("ERROR: IN COMPLETING BOOKS", err);
   }
 }
 
