@@ -20,6 +20,24 @@ router.get("/", (req, res) => {
       });
   });
 
+  // get to retrieve all books that were marked completed
+  router.get("/", (req, res) => {
+    const query = `
+        SELECT * 
+        FROM books
+        WHERE complete = true
+        ORDER BY "title" ASC;
+      `;
+    pool
+      .query(query)
+      .then((result) => {
+        res.send("successful:",  result.rows);
+      })
+      .catch((err) => {
+        console.log("error getting completed books", err);
+        res.sendStatus(500);
+      });
+  });
 
   router.post("/", (req, res) => {
 // post that will post onto dom   
