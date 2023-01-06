@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import SearchPage from '../SearchPage/SearchPage';
 import DescriptionPage from '../DescriptionPage/DescriptionPage';
 import SearchList from '../SearchList/SearchList';
+import completedBooks from '../CompletedBooks/CompletedBooks';
 import './App.css';
 
 function App() {
