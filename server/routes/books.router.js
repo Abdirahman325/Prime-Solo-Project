@@ -2,6 +2,7 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
+
 // getting all books from database
 router.get("/", (req, res) => {
     const query = `
@@ -38,6 +39,25 @@ router.get("/", (req, res) => {
         res.sendStatus(500);
       });
   });
+   // put that grabs by id 
+   router.put("/:id", (req, res) => {
+      const id = req.params.id;
+      console.log("put for id: ", id);
+      let sqlQuery = `
+       UPDATE "books"
+     SET "complete" = $1
+     WHERE "id" = $2
+      `;
+      const sqlParams = [true, id];
+      pool
+        .query(sqlQuery, sqlParams)
+        .then(() => {
+          res.sendStatus(204);
+        })
+        .catch((error) => {
+          res.sendStatus(500);
+        });
+    });
 
   router.post("/", (req, res) => {
 // post that will post onto dom   
@@ -64,24 +84,24 @@ router.get("/", (req, res) => {
         res.sendStatus(500);
       });
   });
-  
-  // put that grabs by id 
-  router.put("/:id", (req, res) => {
-      const id = req.params.id;
-      console.log("put for id: ", id);
-      let sqlQuery = `
-        UPDATE "books" 
-        SET "complete" = $1
-        WHERE "id" = $2;
-      `;
-      const sqlParams = [true, id];
-      pool
-        .query(sqlQuery, sqlParams)
-        .then(() => {
-          res.sendStatus(204);
-        })
-        .catch((error) => {
-          res.sendStatus(500);
-        });
-    });
+
+    router.delete("/:id", (req, res) => {
+          const id = req.params.id;
+          console.log("Delete by id", id);
+          let sqlQuery = `
+        DELETE FROM "books"
+        WHERE "id" = $1;
+           `
+          const sqlParams = [id];
+          pool
+            .query(sqlQuery, sqlParams)
+            .then(() => {
+              console.log("book has been deleted");
+              res.sendStatus(200);
+            })
+            .catch((error) => {
+              console.log(`Error deleting books in db`, error);
+              res.sendStatus(500);
+            });
+        });
 module.exports = router;

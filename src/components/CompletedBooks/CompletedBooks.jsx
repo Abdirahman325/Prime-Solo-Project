@@ -16,6 +16,13 @@ function completedBooks({ books }) {
 
     console.log("COMPLETED BOOKS:", books);
   };
+  const handleDelete = () => {
+    console.log("?????", books.id);
+    dispatch({
+      type: "FETCH_DELETE",
+      payload: books.id,
+    });
+}
   return (
     <>
       <h1>{books.title}</h1>
@@ -23,6 +30,8 @@ function completedBooks({ books }) {
       <h1>{books.author}</h1>
       <h1>{books.description}</h1>
       <button onClick={handleDone}> complete </button>
+      <button onClick={handleDelete}> delete </button>
+
     </>
   );
 }

@@ -8,7 +8,7 @@ import CompletedBooks from "../CompletedBooks/CompletedBooks";
 
 function libraryPage() {
   const dispatch = useDispatch();
-  const books = useSelector((store) => store.books);
+  const books = useSelector((store) => store.books); 
 
     useEffect(() => {
         dispatch({ type: "FETCH_DATABASE" });
