@@ -8,7 +8,7 @@ import { useHistory, useParams } from "react-router-dom";
 function descriptionPage() {
   const details = useSelector((store) => store.description);
   //   const selection = useSelector((store) => store.search);
-    const history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const { id } = useParams();
 
