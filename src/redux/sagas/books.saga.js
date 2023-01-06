@@ -3,10 +3,10 @@ import axios from "axios";
 
 function* fetchBooks(action) {
   try {
-    let res = yield axios.get("/api/books/");
+    let res = yield axios.get("/api/books");
     console.log("response", res.data);
     yield put({
-      type: "SET_DATABOOK",
+      type: "SET_DATABOOKS",
       payload: res.data,
     });
   } catch (err) {
@@ -15,7 +15,7 @@ function* fetchBooks(action) {
 }
 function* fetchConcluded(action) {
     try {
-      const response = yield axios({
+      const res = yield axios({
         method: "PUT",
         url: `/api/books/${action.payload}`,
       });
@@ -26,6 +26,9 @@ function* fetchConcluded(action) {
     }
   }
 
+
+  
+
 function* fetchApi (action){
      yield axios({
         method: "POST", 
@@ -33,10 +36,22 @@ function* fetchApi (action){
         data: action.payload
      });
 }
+
+function* deleteBook(action) {
+    // delete books from db 
+    try {
+      yield axios.delete(`/api/books/${action.payload}`);
+    } catch {
+      console.log("delete chosen book ", action.payload);
+    }
+    yield put({ type: "FETCH_DATABASE" });
+  }
+
 function* booksSaga(){
     yield takeEvery("FETCH_DATABASE",fetchBooks);
     yield takeEvery("FETCH_BOOKS", fetchApi);
     yield takeEvery("FETCH_ALL_COMPLETE", fetchConcluded);
+    yield takeEvery("FETCH_DELETE", deleteBook);
 
 }
 export default booksSaga;

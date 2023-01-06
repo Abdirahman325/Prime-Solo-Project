@@ -71,7 +71,7 @@ router.get("/", (req, res) => {
       console.log("put for id: ", id);
       let sqlQuery = `
         UPDATE "books" 
-        SET “complete” = $1
+        SET "complete" = $1
         WHERE "id" = $2;
       `;
       const sqlParams = [true, id];
