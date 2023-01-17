@@ -8,3 +8,14 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+ DROP TABLE "books";
+ 
+ CREATE TABLE "books" (
+"id" SERIAL PRIMARY KEY, 
+"user_id" INTEGER REFERENCES "user", 
+"cover" VARCHAR, 
+"title" VARCHAR, 
+"author" VARCHAR, 
+"description" VARCHAR,  
+"complete" BOOLEAN DEFAULT FALSE
+);

@@ -11,6 +11,8 @@ function InfoPage() {
       <p>Info Page</p>
     </div>
   );
+  {/* <TextField id="standard-basic" label="Standard" variant="standard"  */}
+  {/* className="btn btn-block" */}
 }
 
 export default InfoPage;

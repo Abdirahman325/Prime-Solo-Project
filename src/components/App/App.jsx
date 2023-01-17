@@ -23,7 +23,7 @@ import SearchPage from '../SearchPage/SearchPage';
 import DescriptionPage from '../DescriptionPage/DescriptionPage';
 import SearchList from '../SearchList/SearchList';
 import LibraryPage from '../LibraryPage/LibraryPage';
-// import completedBooks from '../CompletedBooks/CompletedBooks';
+import completedBooks from '../CompletedBooks/CompletedBooks';
 import './App.css';
 
 function App() {
